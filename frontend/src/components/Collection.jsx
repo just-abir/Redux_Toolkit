@@ -18,26 +18,29 @@ const Collection = () => {
   };
 
   return (
-    <div className="min-h-[calc(100vh-130px)] bg-white-300">
-      <div className="flex justify-end">
-        <button className="bg-red-500 p-3 mb-1" onClick={removeAll}>
+    <div className="min-h-[calc(100vh-130px)] bg-white p-3">
+      <div className="flex justify-end mb-3">
+        <button
+          className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          onClick={removeAll}
+        >
           Remove ALL
         </button>
       </div>
 
       {items.length > 0 ? (
-        <div className="grid grid-cols-4 gap-2">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {items.map((item, id) => (
-            <div key={id} className="border p-4 relative">
+            <div key={id} className="border p-3 rounded shadow relative">
               <img
                 src={item.thumbnail}
                 alt={item.title}
-                className="w-full h-60 object-cover rounded"
+                className="w-full h-48 sm:h-56 md:h-60 object-cover rounded"
               />
 
               <button
                 onClick={() => removeBtn(item.id)}
-                className="absolute bottom-6 right-6 bg-red-500 text-white px-4 py-2 rounded"
+                className="absolute bottom-5 right-5 bg-red-500 text-white px-3 py-2 rounded hover:bg-red-600"
               >
                 Remove
               </button>
@@ -45,7 +48,7 @@ const Collection = () => {
           ))}
         </div>
       ) : (
-        <div className="flex justify-center items-center h-full">
+        <div className="flex justify-center items-center h-[60vh]">
           <p className="font-bold text-xl">No items in collection</p>
         </div>
       )}

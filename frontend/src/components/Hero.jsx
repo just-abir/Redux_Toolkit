@@ -70,21 +70,22 @@ const Hero = () => {
 
   return (
     <>
-      <div className="min-h-[calc(100vh-130px)] bg-yellow-300">
+      <div className="min-h-[calc(100vh-130px)] bg-yellow-300 p-2">
         {result.length > 0 ? (
-          <div className="grid grid-cols-4 gap-2">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             {result.map((elem, id) => (
               <div key={id}>
                 {elem.type === "photo" ? (
                   <div className="relative">
                     <img
-                      className="w-full h-60 object-cover rounded"
+                      className="w-full h-48 sm:h-56 md:h-60 object-cover rounded"
                       src={elem.thumbnail}
                       alt={elem.title}
                     />
+
                     <button
                       onClick={() => saveToFavorite(elem)}
-                      className="font-bold text-pink-500 bg-green-700 absolute rounded-xs px-4 py-2 bottom-1 right-2"
+                      className="absolute bottom-2 right-2 bg-green-700 text-pink-500 font-bold px-3 py-1 rounded"
                     >
                       Save
                     </button>
@@ -95,12 +96,12 @@ const Hero = () => {
                       src={elem.src}
                       poster={elem.thumbnail}
                       controls
-                      className="w-full h-60 object-cover rounded"
+                      className="w-full h-48 sm:h-56 md:h-60 object-cover rounded"
                     />
 
                     <button
                       onClick={() => saveToFavorite(elem)}
-                      className="font-bold text-pink-500 bg-green-700 absolute rounded-xs px-4 py-2 top-0 right-1"
+                      className="absolute top-2 right-2 bg-green-700 text-pink-500 font-bold px-3 py-1 rounded"
                     >
                       Save
                     </button>

@@ -36,16 +36,20 @@ const SearchBar = () => {
   };
 
   return (
-    <div className="border-2 px-4 flex justify-between gap-2 items-center">
+    <div className="border-2 px-3 py-2 flex items-center gap-2 rounded">
       <input
         onChange={handleChange}
         value={searchValue}
         onKeyDown={handleKeyDown}
-        className="h-10  outline-none"
+        className="flex-1 h-10 outline-none min-w-0"
         type="text"
         placeholder="Search your want"
       />
-      <button className="h-10" onClick={handleSearch}>
+
+      <button
+        className="bg-blue-500 text-white px-4 h-10 rounded active:scale-95"
+        onClick={handleSearch}
+      >
         Search
       </button>
     </div>

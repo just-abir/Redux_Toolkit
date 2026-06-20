@@ -8,7 +8,10 @@ const FavouriteList = () => {
 
   return (
     <div>
-      <div className="font-bold" onClick={favouriteBtn}>
+      <div
+        className="font-bold  px-4 h-10 bg-yellow-500 flex rounded-xl items-center"
+        onClick={favouriteBtn}
+      >
         <Link to="/favourite">Favourite</Link>
       </div>
     </div>

@@ -22,12 +22,16 @@ const LowerNavbar = () => {
   const activeTab = useSelector((state) => state.search.activeTab);
   return (
     <div>
-      <div className="flex justify-start items-center gap-2">
+      <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 p-2">
         {tabs.map((elem, id) => (
           <button
-            onClick={() => btnHandle(elem)}
             key={id}
-            className={`${activeTab === elem ? "bg-blue-600" : "bg-green-600"} p-5  active:scale-95 border-2`}
+            onClick={() => btnHandle(elem)}
+            className={`
+        ${activeTab === elem ? "bg-blue-600" : "bg-green-600"}
+        px-4 py-3 rounded text-white
+        active:scale-95
+      `}
           >
             {elem}
           </button>
