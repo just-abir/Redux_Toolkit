@@ -10,6 +10,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import Collection from "./Collection";
 import { addfavourite } from "@/redux/Features/favourite";
+import toast from "react-hot-toast";
 
 const Hero = () => {
   const dispatch = useDispatch();
@@ -64,37 +65,55 @@ const Hero = () => {
 
   const saveToFavorite = (elem) => {
     dispatch(addfavourite(elem));
+    toast.success("Added to Favorites! ❤️");
   };
 
   return (
     <>
-      <div className="min-h-[calc(100vh-130px)] bg-yellow-300 grid grid-cols-4 gap-2">
-        {result.map((elem, id) => (
-          <div key={id}>
-            {elem.type === "photo" ? (
-              <div className="relative">
-                <img
-                  className="w-full h-60 object-cover rounded"
-                  src={elem.thumbnail}
-                  alt={elem.title}
-                />
-                <button
-                  onClick={() => saveToFavorite(elem)}
-                  className="font-bold text-pink-500 bg-green-700 absolute rounded-xs px-4 py-2  bottom-1 right-2"
-                >
-                  Save
-                </button>
+      <div className="min-h-[calc(100vh-130px)] bg-yellow-300">
+        {result.length > 0 ? (
+          <div className="grid grid-cols-4 gap-2">
+            {result.map((elem, id) => (
+              <div key={id}>
+                {elem.type === "photo" ? (
+                  <div className="relative">
+                    <img
+                      className="w-full h-60 object-cover rounded"
+                      src={elem.thumbnail}
+                      alt={elem.title}
+                    />
+                    <button
+                      onClick={() => saveToFavorite(elem)}
+                      className="font-bold text-pink-500 bg-green-700 absolute rounded-xs px-4 py-2 bottom-1 right-2"
+                    >
+                      Save
+                    </button>
+                  </div>
+                ) : (
+                  <div className="relative">
+                    <video
+                      src={elem.src}
+                      poster={elem.thumbnail}
+                      controls
+                      className="w-full h-60 object-cover rounded"
+                    />
+
+                    <button
+                      onClick={() => saveToFavorite(elem)}
+                      className="font-bold text-pink-500 bg-green-700 absolute rounded-xs px-4 py-2 top-0 right-1"
+                    >
+                      Save
+                    </button>
+                  </div>
+                )}
               </div>
-            ) : (
-              <video
-                src={elem.src}
-                poster={elem.thumbnail}
-                controls
-                className="w-full h-60 object-cover rounded"
-              />
-            )}
+            ))}
           </div>
-        ))}
+        ) : (
+          <div className="flex justify-center items-center h-full">
+            <p className="text-xl font-bold">No results found</p>
+          </div>
+        )}
       </div>
     </>
   );
